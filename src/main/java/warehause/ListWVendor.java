@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 public enum ListWVendor implements Collection<Object> {
-    Bridgestone, Continental, Cooper, Goodyear, KAMA, Nokian, Yokohama;
+    Bridgestone, Continental, Cooper, Goodyear, KAMA, Nokian, Yokohama, unknown;
 
     @Override
     public int size() {

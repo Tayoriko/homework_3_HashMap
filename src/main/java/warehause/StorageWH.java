@@ -111,4 +111,10 @@ public class StorageWH implements Storage {
         }
     }
 
+    @Override
+    public void clean()
+    {
+        items.clear();
+    }
+
 }

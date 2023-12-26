@@ -1,6 +1,6 @@
 package warehause;
 
 public enum ListWType {
-    allSeason, drift, offroad, summer, winterS, winterV
+    allSeason, drift, offroad, summer, winterS, winterV, unknown
 
 }

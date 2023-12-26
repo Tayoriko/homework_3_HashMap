@@ -30,4 +30,6 @@ public interface Storage {
     boolean checkType(ListWType type);
     //check void section in wh
     boolean checkPlace(String place);
+    //clean base
+    void clean();
 }

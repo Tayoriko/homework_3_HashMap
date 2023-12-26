@@ -1,0 +1,15 @@
+id,vendor,type,place,quantity
+1,Bridgestone,allSeason,A,12
+2,Bridgestone,summer,B,134
+4,Bridgestone,drift,C,213
+3,Continental,allSeason,A,14
+5,Continental,summer,B,54
+6,Goodyear,offroad,C,32
+7,Nokian,drift,D,23
+8,Nokian,summer,E,1
+9,Cooper,drift,A,23
+10,KAMA,winterS,B,34
+12,KAMA,allSeason,A,12
+11,KAMA,winterV,C,34
+13,Yokohama,offroad,A,97
+14,Yokohama,winterS,A,54

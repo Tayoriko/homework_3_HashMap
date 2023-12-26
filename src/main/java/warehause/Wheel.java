@@ -80,12 +80,11 @@ public final class Wheel {
 
     @Override
     public String toString() {
-        return "Wheel[" +
-                "id=" + id + ", " +
-                "vendor=" + vendor + ", " +
-                "type=" + type + ", " +
-                "place=" + place + ", " +
-                "quantity=" + quantity + ']';
+        return id + ", " +
+                vendor + ", " +
+                type + ", " +
+                place + ", " +
+                quantity;
     }
 }
 
