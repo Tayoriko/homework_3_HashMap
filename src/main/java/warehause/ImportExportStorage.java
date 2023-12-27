@@ -1,19 +1,16 @@
 package warehause;
 
-import org.apache.commons.io.output.FileWriterWithEncoding;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.csv.CsvWriter;
-
 import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.csv.CsvWriterSettings;
+
 import warehause.exceptions.ItemNotFoundException;
 
 
 public class ImportExportStorage {
-    public Storage importCSV(Storage storage, String fileName){
+    public Storagable importCSV(Storagable storage, String fileName){
         storage.clean();
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(
@@ -48,7 +45,7 @@ public class ImportExportStorage {
         return storage;
     }
 
-    public void exportCSV(Storage storage, String fileName) throws IOException {
+    public void exportCSV(Storagable storage, String fileName) throws IOException {
         try (FileWriter writer = new FileWriter("./src/test/resources/" + fileName + ".csv")) {
             writer.write("");
             String exportData;

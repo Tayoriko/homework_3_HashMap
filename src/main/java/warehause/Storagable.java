@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 
-public interface Storage {
+public interface Storagable {
     //add 1 type wheel to Storage
     void putItem(Wheel wheel);
     //add X type wheels to storage

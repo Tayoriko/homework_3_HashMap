@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class StorageWH implements Storage {
+public class StorageWH implements Storagable {
     public static final int INITIAL_CAPACITY = 256;
     private final Map<String, Wheel> items = new HashMap<>(INITIAL_CAPACITY);
 

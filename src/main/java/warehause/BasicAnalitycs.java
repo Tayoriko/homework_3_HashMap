@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.Set;
 
 public class BasicAnalitycs implements Analitics {
-    private final Storage storage;
-    public BasicAnalitycs(Storage storage){
+    private final Storagable storage;
+    public BasicAnalitycs(Storagable storage){
         this.storage = storage;
     }
 
