@@ -1,6 +1,7 @@
 package students;
 
 import java.util.Collection;
+import java.util.Map;
 import java.util.Set;
 
 public interface Examinable {
@@ -19,6 +20,16 @@ public interface Examinable {
     //вывод последних пяти студентов, сдавших на отлично
     Set<String> lastFiveStudentsWithExcellentMarkOnAnySubject(int amount);
 
+    //вывод всех сданных хотя бы одним студентом предметов
+    Collection<String> getScoreSubjects();
+
+    //вывод всех сданных предметов выбранным студентом
+    Collection<Student> getScoreStudents(ListSubject subject);
+
     //вывод всех попыток сдать предмет всеми студентами
-    Collection<Score> getAllScores();
+    Map<String, Score> getAllScores();
+
+    //вывод предметов, сданных в конкретный день, и участвовавших в этом студентов
+    Collection<Student> getStudentsScoreByDate(ScoreDate date);
+
 }

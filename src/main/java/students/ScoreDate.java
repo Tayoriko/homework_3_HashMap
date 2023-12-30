@@ -21,7 +21,7 @@ public final class ScoreDate {
         this.hour = hour;
         this.minutes = minutes;
         this.day = this.year + this.month + this.date;
-        this.abs = this.year + this.month + this.date + this.hour + this.minutes;
+        this.abs = (this.year + this.month + this.date) * 10000 + this.hour + this.minutes;
     }
 
     public int year() {

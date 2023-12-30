@@ -7,6 +7,7 @@ public class ScoreDB implements  Examinable {
     private int INITIAL_CAPACITY = 256;
     public Map<String, Score> scoreDB = new HashMap<>(INITIAL_CAPACITY);
     private boolean addCheck = false;
+    public ScoreCash cashDB = new ScoreCash();
 
     @Override
     public void addScore(Score score) {
@@ -21,6 +22,7 @@ public class ScoreDB implements  Examinable {
             scoreDB.put(score.getId(), score);
         }
         addCheck = false;
+        cashDB.addScore(score);
     }
 
     /*
@@ -99,8 +101,43 @@ public class ScoreDB implements  Examinable {
         return lastFive;
     }
 
+    //вывод всех сданных хотя бы одним студентом предметов
     @Override
-    public Collection<Score> getAllScores() {
-        return null;
+    public Collection<String> getScoreSubjects() {
+        Collection<String> result = new HashSet<>();
+        for (Score score : scoreDB.values()){
+            result.add(score.getSubject().getFullName());
+        }
+        return result;
+    }
+
+    //вывод всех сданных предметов выбранным студентом
+    @Override
+    public Collection<Student> getScoreStudents(ListSubject subject){
+        Collection<Student> result = new HashSet<>();
+        for (Score score : scoreDB.values()){
+            if (score.getSubject() == subject) {
+                result.add(score.getStudent());
+            }
+        }
+        return result;
+    }
+
+    //вывод всех попыток сдать предмет всеми студентами
+    @Override
+    public Map<String, Score> getAllScores(){
+        return scoreDB;
+    }
+
+    //вывод предметов, сданных в конкретный день, и участвовавших в этом студентов
+    @Override
+    public Collection<Student> getStudentsScoreByDate(ScoreDate date){
+        Collection<Student> result = new HashSet<>();
+        for (Score score : scoreDB.values()){
+            if (score.getLastDate().day() == date.day()) {
+                result.add(score.getStudent());
+            }
+        }
+        return result;
     }
 }
