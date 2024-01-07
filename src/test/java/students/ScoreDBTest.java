@@ -2,6 +2,7 @@ package students;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -44,6 +45,7 @@ class ScoreDBTest {
 
     }
 
+    @DisplayName("Test for add score to in-memory database")
     @Test
     void addScore() {
         score_1.setScore(5);
@@ -54,6 +56,7 @@ class ScoreDBTest {
         Assertions.assertEquals(4, test.getCounter());
     }
 
+    @DisplayName("Test for get score records from base by student and subject")
     @Test
     void getScore() {
         Score test = scoreDB.getScore(student_1, ListSubject.Alg);
@@ -61,7 +64,7 @@ class ScoreDBTest {
         Assertions.assertEquals(ListSubject.Alg, test.getSubject());
     }
 
-
+    @DisplayName("Test for getting average score by subject")
     @Test
     void getAverageScoreForSubject() {
         scoreDB.addScore(score_1);
@@ -71,6 +74,7 @@ class ScoreDBTest {
 
     }
 
+    @DisplayName("Test for getting last 5 students with excellent marks")
     @Test
     void lastFiveStudentsWithExcellentMarkOnAnySubject() {
         Set<String> lastFive;
@@ -79,6 +83,7 @@ class ScoreDBTest {
         Assertions.assertEquals(5, lastFive.size());
     }
 
+    @DisplayName("Test for getting students with more then 1 counters for any subjects")
     @Test
     void multipleSubmissionsStudentNames() {
         scoreDB.addScore(score_6);
@@ -86,6 +91,7 @@ class ScoreDBTest {
         Assertions.assertEquals(2, submissionsStudentNames.size());
     }
 
+    @DisplayName("Test for get all subjects with scores from un-memory database")
     @Test
     void getAllScores() {
         Collection<String> allScores;
@@ -93,6 +99,7 @@ class ScoreDBTest {
         Assertions.assertEquals(4, allScores.size());
     }
 
+    @DisplayName("Test for getting students for the subject")
     @Test
     void getScoreStudents() {
         Collection<Student> allScores;
@@ -100,6 +107,7 @@ class ScoreDBTest {
         Assertions.assertEquals(3, allScores.size());
     }
 
+    @DisplayName("Test for getting all scores")
     @Test
     void testGetAllScores() {
         Map<String, Score> allScores;
@@ -107,6 +115,7 @@ class ScoreDBTest {
         Assertions.assertEquals(6, allScores.size());
     }
 
+    @DisplayName("Test for getting students, who get scores by the date")
     @Test
     void getStudentsScoreByDate() {
         Collection<Student> allScores;
@@ -115,6 +124,7 @@ class ScoreDBTest {
         Assertions.assertEquals(4, allScores.size());
     }
 
+    @DisplayName("Test cash with average mark by the score")
     @Test
     void testCash()
     {

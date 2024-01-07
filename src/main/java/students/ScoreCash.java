@@ -22,7 +22,7 @@ public class ScoreCash {
         public void addRecord(int score){
             scoreRecords++;
             scoreSumm += score;
-            String format = decimalFormat.format((double) scoreSumm / scoreRecords);
+            String format = decimalFormat.format((double) scoreSumm / scoreRecords).replace(",",".");
             scoreAvg = Double.parseDouble(format);
         }
 

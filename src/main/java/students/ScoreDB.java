@@ -80,16 +80,16 @@ public class ScoreDB implements  Examinable {
 
     @Override
     public Set<String> lastFiveStudentsWithExcellentMarkOnAnySubject(int amount) {
-        TreeMap<Integer, String> map = new TreeMap<>();
+        TreeMap<Date, String> map = new TreeMap<>();
         Set<String> lastFive = new HashSet<>(5);
         //собрали всех студентов с оценкой "отлично"
         for (Score score : scoreDB.values()){
             if (score.getScore() == 5){
-                map.put(score.getLastDate().abs(), score.student.toString());
+                map.put(score.getLastDate().getDate(), score.student.toString());
             }
         }
         //отсортировали по дате и выбрали 5 последних
-        int maxKey = map.lastKey();
+        Date maxKey = map.lastKey();
         lastFive.add(map.get(maxKey));
         for (int i = 0; i < amount - 1; i++) {
             if (map.lowerKey(maxKey) == null){break;}
@@ -134,7 +134,9 @@ public class ScoreDB implements  Examinable {
     public Collection<Student> getStudentsScoreByDate(ScoreDate date){
         Collection<Student> result = new HashSet<>();
         for (Score score : scoreDB.values()){
-            if (score.getLastDate().day() == date.day()) {
+            if (score.getLastDate().getDate().getYear() == date.getDate().getYear()
+            && score.getLastDate().getDate().getMonth() == date.getDate().getMonth()
+            && score.getLastDate().getDate().getDate() == date.getDate().getDate()) {
                 result.add(score.getStudent());
             }
         }
