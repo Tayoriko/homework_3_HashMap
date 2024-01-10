@@ -27,7 +27,7 @@ public class ResultBoard {
         if (board.lastKey() != null) {
             key = this.board.lastKey();
         }
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             result.add(this.board.get(key));
             if (board.lowerKey(key) != null) {
                 key = this.board.lowerKey(key);
