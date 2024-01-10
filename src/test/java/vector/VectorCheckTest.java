@@ -9,6 +9,6 @@ class VectorCheckTest {
     @Test
     void readFile() {
         VectorCheck check = new VectorCheck();
-        check.readFile();
+        check.getMaxVectorFromFile("vector");
     }
 }

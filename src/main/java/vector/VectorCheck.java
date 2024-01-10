@@ -27,15 +27,17 @@ public class VectorCheck {
         else return 0.0;
     }
 
-    public void readFile() {
-        try {
-            double v = new BufferedReader(new FileReader("./src/test/resources/vector.txt")).lines()
+    public void getMaxVectorFromFile(String filename) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("./src/test/resources/" + filename + ".txt"))){
+            double v = reader.lines()
                     .mapToDouble(VectorCheck::calcLength)
                     .max()
                     .orElse(0.0);
             System.out.println(v);
 
         } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
