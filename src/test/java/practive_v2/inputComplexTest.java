@@ -67,7 +67,6 @@ public class inputComplexTest {
     void readRecordTest(){
         String data = "Николай, Басков, Москва, DevOps, 64";
         Check<RecordsInBase> check = new InputRecord().checkRecordInput(data);
-
         Assertions.assertEquals(false, check.isError());
         Assertions.assertEquals(64, check.getValue().getOld());
     }

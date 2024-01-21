@@ -13,9 +13,12 @@ class LocalDBTest {
         LocalDB db = LocalDB.getInstance();
         String data = "Николай, Басков, Москва, DevOps, 64";
         Check<RecordsInBase> check = new InputRecord().checkRecordInput(data);
+        db.addRecord(check.getValue());
+        db.addRecord(check.getValue());
         if (!check.isError()) db.addRecord(check.getValue());
-        db.addRecord(check.getValue());
-        db.addRecord(check.getValue());
+        data = "Николай-1, Басков, Москва, DevOps, 64";
+        check = new InputRecord().checkRecordInput(data);
+        if (!check.isError()) db.addRecord(check.getValue());
         Assertions.assertEquals(3, db.getSize());
     }
 }
