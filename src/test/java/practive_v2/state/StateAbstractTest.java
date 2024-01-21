@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import practive_v2.GlobalElements;
 import practive_v2.LocalDB;
+import practive_v2.RecordsInBase;
 import practive_v2.input.Check;
 import practive_v2.input.InputInteger;
 import java.io.ByteArrayInputStream;
@@ -94,9 +95,53 @@ class StateAbstractTest {
         context.getState().reqInformation();
         System.setIn(System.in);
         context.getState().getInformation();
+        RecordsInBase record =  context.getState().getRecord();
+        LocalDB.getInstance().addRecord(record);
+        System.out.println("Succes! ID: " + LocalDB.getInstance().getId());
         LocalDB db = LocalDB.getInstance();
         Assertions.assertEquals(1, db.getSize());
+    }
 
+    @DisplayName("Test delete record from menu")
+    @Test
+    public void delRecordTest(){
+        addNewRecordTest();
+        String input = "2";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        context.getState().waitAction();
+        input = "1";
+        in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        context.getState().reqID("delete");
+        System.setIn(System.in);
+        if (!context.getState().getID().isError()) LocalDB.getInstance().delRecord(context.getState().id);
+        StateContext.contructor(new StateRecords());
+        Assertions.assertEquals(0, LocalDB.getInstance().getSize());
+    }
 
+    @DisplayName("Teset for update record")
+    @Test
+    public void updateRecordTest(){
+        addNewRecordTest();
+        String input = "3";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        context.getState().waitAction();
+        input = "1";
+        in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        context.getState().reqID("update");
+        if (!context.getState().getID().isError()) {
+            input = "Николай, Хуясков, Москва, DevOps, 64";
+            in = new ByteArrayInputStream(input.getBytes());
+            System.setIn(in);
+            context.getState().reqInformation();
+            System.setIn(System.in);
+            context.getState().getInformation();
+            LocalDB.getInstance().updateRecord(context.getState().id, context.getState().record);
+            System.out.println("Success! New record for ID: " + LocalDB.getInstance().getRecordAsString(context.getState().id));
+        }
+        Assertions.assertEquals("1, "+ input, LocalDB.getInstance().getRecordAsString(1));
     }
 }
