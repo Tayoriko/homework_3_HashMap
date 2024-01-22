@@ -1,8 +1,5 @@
 package practive_v2;
 
-import practice.OneStudent;
-import practice.PracticeLocalDB;
-
 import java.util.*;
 import java.util.stream.Collectors;
 

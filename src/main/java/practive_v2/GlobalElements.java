@@ -1,8 +1,5 @@
 package practive_v2;
 
-import practive_v2.state.StateContext;
-import practive_v2.state.StateMain;
-
 import java.util.Scanner;
 
 public class GlobalElements {
