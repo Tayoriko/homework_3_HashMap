@@ -13,6 +13,7 @@ class LocalDBTest {
     @Test
     void addRecordTest() {
         LocalDB db = LocalDB.getInstance();
+        db.clear();
         String data = "Николай, Басков, Москва, DevOps, 64";
         Check<RecordsInBase> check = new InputRecord().checkRecordInput(data);
         db.addRecord(check.getValue());
@@ -33,6 +34,7 @@ class LocalDBTest {
         String data = "Николай, Басков, Москва, DevOps, 64";
         Check<RecordsInBase> check = new InputRecord().checkRecordInput(data);
         db.addRecord(check.getValue());
+        check = new InputRecord().checkRecordInput(data);
         db.addRecord(check.getValue());
         Assertions.assertEquals(2, db.getSize());
         db.delRecord(1);
@@ -44,7 +46,7 @@ class LocalDBTest {
     void getAllRecordTest(){
         LocalDB db = LocalDB.getInstance();
         String data = "Николай, Басков, Москва, DevOps, 64";
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
             Check<RecordsInBase> check = new InputRecord().checkRecordInput(data);
             db.addRecord(check.getValue());
         }

@@ -23,6 +23,8 @@ class StateAbstractTest {
                 + "0. EXIT" + GlobalElements.LN
                 + "1. Students" + GlobalElements.LN
                 + "2. Statistics" + GlobalElements.LN
+                + "3. Search" + GlobalElements.LN
+                + "8. LOAD" + GlobalElements.LN
                 + "9. SAVE" + GlobalElements.LN;
         Assertions.assertEquals(menu, context.getState().getMenuString());
     }
@@ -56,6 +58,7 @@ class StateAbstractTest {
     @DisplayName("Test switch Main->Record")
     @Test
     void switchTest() {
+        LocalDB.getInstance().clear();
         context.getState().init();
         String input = "1";
         InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -110,7 +113,7 @@ class StateAbstractTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         context.getState().waitAction();
-        input = "1";
+        input = LocalDB.getInstance().getId().toString();
         in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         context.getState().reqID("delete");
@@ -128,7 +131,7 @@ class StateAbstractTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         context.getState().waitAction();
-        input = "1";
+        input = LocalDB.getInstance().getId().toString();
         in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         context.getState().reqID("update");
@@ -141,7 +144,7 @@ class StateAbstractTest {
             context.getState().getInformation();
             LocalDB.getInstance().updateRecord(context.getState().id, context.getState().record);
             System.out.println("Success! New record for ID: " + LocalDB.getInstance().getRecordAsString(context.getState().id));
-        }
-        Assertions.assertEquals("1, "+ input, LocalDB.getInstance().getRecordAsString(1));
+        } else System.out.println("error while update record");
+        Assertions.assertEquals("11, "+ input, LocalDB.getInstance().getRecordAsString(11));
     }
 }

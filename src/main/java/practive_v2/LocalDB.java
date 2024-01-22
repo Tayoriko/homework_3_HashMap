@@ -40,6 +40,7 @@ public class LocalDB {
             db.get(getId()).setId(getId());
             LocalCash.getInstance().addStudentToTree(record.getId(), record.getSurname());
         } else {
+            if (db.containsKey(record.getId())) System.out.println("Error: ID " + record.getId() + " found in base!");
             db.put(record.getId(), record);
             LocalCash.getInstance().addStudentToTree(record.getId(), record.getSurname());
         }
@@ -114,5 +115,9 @@ public class LocalDB {
 
     public Map<Integer, RecordsInBase> getAll(){
         return db;
+    }
+
+    public void clear(){
+        db.clear();
     }
 }
