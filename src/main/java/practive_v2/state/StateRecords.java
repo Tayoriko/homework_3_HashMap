@@ -43,25 +43,28 @@ public class StateRecords extends StateAbstract {
                 StateContext.contructor(new StateRecords());
                 break;
             }
-            case 3: {
+            case 3: {   //update record by ID
                 actionUpdateRecord();
                 StateContext.contructor(new StateRecords());
                 break;
             }
-            case 4: {
+            case 4: {   //read recrod by ID
                 actionReadRecord();
                 StateContext.contructor(new StateRecords());
                 break;
             }
-            case 5: {
+            case 5: {   //read all records in base
                 actionReadAll();
                 StateContext.contructor(new StateRecords());
                 break;
             }
-            case 9: StateContext.contructor(new StateMain()); break;
+            case 9: {   //back to upper layer menu
+                StateContext.contructor(new StateMain());
+                break;
+            }
             default:
                 System.out.println("Invalid action: " + action);
-                new StateContext(new StateMain());
+                new StateContext(new StateRecords());
                 break;
         }
     }

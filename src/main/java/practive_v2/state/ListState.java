@@ -6,7 +6,8 @@ public enum ListState {
 
     MAIN(0, "===> Main menu"),
     RECORDS(1, "===> Students menu"),
-    STATS(1, "===> Statistics menu");
+    STATS(1, "===> Statistics menu"),
+    SEARCH(1, "===> Search menu");
 
     private Integer layer;
     private String name;
