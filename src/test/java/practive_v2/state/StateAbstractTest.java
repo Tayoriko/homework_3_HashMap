@@ -145,6 +145,6 @@ class StateAbstractTest {
             LocalDB.getInstance().updateRecord(context.getState().id, context.getState().record);
             System.out.println("Success! New record for ID: " + LocalDB.getInstance().getRecordAsString(context.getState().id));
         } else System.out.println("error while update record");
-        Assertions.assertEquals("11, "+ input, LocalDB.getInstance().getRecordAsString(11));
+        Assertions.assertEquals(LocalDB.getInstance().getId().toString()+", "+ input, LocalDB.getInstance().getRecordAsString(LocalDB.getInstance().getId()));
     }
 }
