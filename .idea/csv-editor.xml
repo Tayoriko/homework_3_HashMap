@@ -3,20 +3,6 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="\src\main\resources\practiceDB.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\src\main\resources\pratice_v2.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
         <entry key="\src\test\resources\export.csv">
           <value>
             <Attribute>
@@ -25,13 +11,6 @@
           </value>
         </entry>
         <entry key="\src\test\resources\import.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\tmp\monthly_IBM.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
